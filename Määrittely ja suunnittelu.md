@@ -55,7 +55,40 @@ Menot ja säästö välilehdet:
 Virhetilanteet on otettu huomioon siten, että sovellus antaa välittömän palautteen ja auttaa käyttäjää korjaamaan tilanteen. Tämä lisää sovelluksen luotettavuutta ja käytettävyyttä erityisesti tilanteissa, joissa käyttäjä tekee inhimillisiä virheitä.
 
 Esimerkit virhetilanteista:
+
 <img src="https://github.com/user-attachments/assets/eccc8e60-8ec1-4226-9461-d38ac503683b" width="200"/> <img src="https://github.com/user-attachments/assets/9a8c5da0-9e57-494d-980c-cc64282b1898" width="200"/>
 
+## Tietoarkkitehtuuri ja tekninen suunnittelu
 
+Tässä vaiheessa tavoittelemme sovelluksen toteutuksessa arvosanan 5 vaatimuksia. Tavoitteena on rakentaa pilvipohjainen web-sovellus, jossa on selkeä tietoarkkitehtuuri, moderni käyttöliittymä ja toimiva taustajärjestelmä. Mikäli aika tai resurssit eivät riitä täyteen toteutukseen, teknistä ratkaisua voidaan keventää esimerkiksi tiedon tallennuksen ja ympäristön osalta.
 
+Sovelluksen tietoarkkitehtuuri perustuu kolmeen pääosaan: tulot, menot ja säästötavoitteet. Kaikki tiedot liittyvät yksittäiseen käyttäjään ja ajankohtaan. Tiedot tallennetaan relaatiopohjaiseen tietokantaan, jossa on erilliset taulut käyttäjätiedoille, tapahtumille ja tavoitteille. Arkkitehtuuri tukee myös yhteiskäyttöominaisuutta, jossa esimerkiksi perheenjäsenet voivat jakaa säästötavoitteita tai nähdä yhteisiä menoja.
+
+Käyttöliittymä toteutetaan Reactilla, ja se rakennetaan uudelleenkäytettävistä komponenteista (esim. kalenteri, syöttölomakkeet, etenemispalkki). Frontend keskustelee taustajärjestelmän kanssa REST API -kutsujen kautta. Sovellus suunnitellaan responsiiviseksi, joten se toimii sekä tietokoneella että mobiililaitteilla.
+
+Taustajärjestelmä toteutetaan Node.js:n ja Expressin avulla. Backend tarjoaa käyttöliittymälle rajapinnan tietojen tallentamiseen ja hakemiseen. Käyttäjän syötteet validoidaan ja virhetilanteet käsitellään selkeästi. Tietoturva huomioidaan perusperiaattein, esimerkiksi käyttöoikeuksien rajaamisella ja syötteiden tarkistamisella.
+
+Tietokantana hyödynnetään PostgreSQL:ää, joka tarjoaa relaatiopohjaisen ja monipuolisen tietorakenteen sekä tehokkaan kyselyiden hallinnan. Toteutuksessa voidaan käyttää esimerkiksi Azure Database for PostgreSQL -palvelua, joka on yhteensopiva sovelluksen arkkitehtuurin kanssa ja integroituu hyvin Azuren muihin komponentteihin.
+
+Sovellus julkaistaan pilvipalveluun. Ensisijaisesti hyödynnämme Microsoft Azurea, joka on ollut käytössä myös kurssin aikana. Azure tarjoaa soveltuvat palvelut sekä frontendin julkaisuun (esimerkiksi Azure Static Web Apps) että backendin ajamiseen (esimerkiksi Azure App Service tai Azure Functions).
+
+## Projektinhallinta ja käyttäjätestaus
+
+Projektia toteutetaan pareittain. Työ jaetaan vaiheittain niin, että molemmat tekijät osallistuvat suunnitteluun ja dokumentointiin, mutta varsinaisessa toteutuksessa tehtäviä jaetaan osaamisen ja kiinnostuksen mukaan. Työnjakoa ja edistymistä seurataan säännöllisesti, ja jokaisesta työvaiheesta pidetään kirjaa GitHub-repositoriossa sekä erillisessä tuntikirjanpidossa.
+
+Projektissa hyödynnetään versionhallintaa (Git) sekä GitHubin projektinhallintatyökaluja.
+
+**Käyttäjätestaus toteutetaan kahdessa vaiheessa:**
+
+**Prototyyppivaiheessa (Figma):** Käyttöliittymän toimivuutta ja selkeyttä arvioidaan omatoimisesti tiimin jäsenten toimesta. Arvioinnissa keskitytään erityisesti siihen, kuinka looginen ja helppokäyttöinen prototyyppi on eri käyttäjäpersoonien näkökulmasta. 
+
+**Toiminnallisen sovelluksen testausvaiheessa:** Valmis sovellus annetaan testattavaksi ulkopuolisille käyttäjille, mahdollisesti omille ystävillemme, jotka eivät ole olleet mukana kehitystyössä. He suorittavat tyypillisiä käyttötapauksia, kuten budjetin asettamisen, kulujen lisäämisen ja säästötavoitteiden seuraamisen. Tarkoituksena on varmistaa, että sovellus toimii suunnitellusti ja että se on helppo ja miellyttävä käyttää myös uusille käyttäjille.
+
+Testauksessa kiinnitetään erityisesti huomiota:
+
+- Käyttöliittymän intuitiivisuuteen  
+- Toimintojen löytymiseen ja ymmärrettävyyteen  
+- Käyttökokemukseen eri laitteilla  
+- Virhetilanteiden käsittelyyn
+
+Testauksen perusteella voidaan tehdä tarvittavia parannuksia ennen lopullista esittelyvaihetta. Molemmat tiimin jäsenet osallistuvat testaukseen ja palautteen käsittelyyn.
