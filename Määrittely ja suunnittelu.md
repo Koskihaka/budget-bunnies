@@ -18,5 +18,12 @@ Alla on esitetty visuaaliset käyttäjäpersoonakortit, joissa kuvataan tarkemmi
 
 <img src="https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836" width="400"/> <img src="https://github.com/user-attachments/assets/def433e4-f914-4cdb-a4b7-db4961194cae" width="400"/> <img src="https://github.com/user-attachments/assets/62b31b4b-1065-4360-b42d-ed4921d01129" width="400"/>
 
+## Käyttötapaukset ja käyttötilanteet
 
+Sovelluksen käyttötapaukset ja käyttötilanteet pohjautuvat käyttäjäpersoonien arkeen ja tarpeisiin. Käyttäjät hyödyntävät sovellusta monin eri tavoin, mutta kaikille yhteistä on tarve saada selkeä kokonaiskuva taloudellisesta tilanteesta ja tukea arjen rahankäytön hallintaan.
 
+Tyypillisimpiä käyttötapauksia ovat budjetin laatiminen ja sen seuraaminen eri menoerille, kuten asumiseen, ruokaan, lasten kuluihin ja vapaa-aikaan. Käyttäjät haluavat seurata, kuinka hyvin pysyvät budjetissaan ja saada visuaalista palautetta tavoitteiden toteutumisesta. Toinen keskeinen käyttötapaus on tulojen ja menojen kirjaaminen. Tämä voi tarkoittaa palkan tai etuuden lisäämistä sovellukseen, yksittäisten ostosten kirjaamista tai kulutuksen tarkkailua päivän tai viikon tasolla. Käyttäjät haluavat, että sovelluksen käyttö on tässä mahdollisimman nopeaa ja vaivatonta.
+
+Säästötavoitteiden asettaminen ja seuraaminen on monelle tärkeä motivaattori. Käyttäjät haluavat nähdä konkreettisesti, miten pienetkin säästöt karttuvat ajan myötä ja päästä lähemmäs henkilökohtaisia tai perhekohtaisia tavoitteita, kuten hätärahastoa tai lomamatkaa. Joillekin käyttäjille keskeistä on myös velkojen hallinta ja maksusuunnitelmien seuraaminen. Sovellus toimii tällöin tukena oman talouden tervehdyttämisessä ja auttaa tekemään parempia valintoja rahankäytön suhteen. Lisäksi sovellusta käytetään yhteiskäyttötilanteissa, jolloin koko perhe voi olla tietoinen taloudellisesta tilanteesta. Tämä voi tarkoittaa esimerkiksi vanhemman ja lapsen yhteistä rahankäytön suunnittelua tai puolison kanssa jaettua budjettiseurantaa.
+
+Käyttötilanteet ajoittuvat usein arjen hetkiin: palkan tai etuuden saapuessa, laskujen maksamisen yhteydessä, kuukauden alussa budjetointia tehtäessä tai iltaisin, kun on hetki aikaa tarkistaa taloustilanne.
