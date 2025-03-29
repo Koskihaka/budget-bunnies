@@ -46,11 +46,16 @@ Tulot välilehti:
 
 <img src="https://github.com/user-attachments/assets/8ef88c60-1f42-49c6-a826-21e521db7ad8" width="200"/>
 
-Virhetilanteet on otettu huomioon siten, että sovellus antaa välittömän palautteen ja auttaa käyttäjää korjaamaan tilanteen. Tämä lisää sovelluksen luotettavuutta ja käytettävyyttä erityisesti tilanteissa, joissa käyttäjä tekee inhimillisiä virheitä.
-
 Muissa välilehdissä, kuten Menot ja Säästö, on noudatettu samoja suunnitteluperiaatteita. Käyttöliittymä säilyy läpi sovelluksen visuaalisesti rauhallisena ja informatiivisena. Vähemmän käytetyt osiot on piilotettu valikon taakse, mikä tukee minimalistista käyttöliittymäsuunnittelua.
 
-Menot välilehti:                                                                                           Säästö välilehti:
+Menot ja säästö välilehdet:
 
 <img src="https://github.com/user-attachments/assets/27413648-2e50-45af-b9e5-cba5803aee70" width="200"/>   <img src="https://github.com/user-attachments/assets/0b73cf44-6682-4591-a3e3-e184adc297da" width="200"/>
+
+Virhetilanteet on otettu huomioon siten, että sovellus antaa välittömän palautteen ja auttaa käyttäjää korjaamaan tilanteen. Tämä lisää sovelluksen luotettavuutta ja käytettävyyttä erityisesti tilanteissa, joissa käyttäjä tekee inhimillisiä virheitä.
+
+Esimerkit virhetilanteista:
+<img src="https://github.com/user-attachments/assets/eccc8e60-8ec1-4226-9461-d38ac503683b" width="200"/> <img src="https://github.com/user-attachments/assets/9a8c5da0-9e57-494d-980c-cc64282b1898" width="200"/>
+
+
 
