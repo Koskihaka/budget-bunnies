@@ -1,4 +1,5 @@
-# Projektin 1. vaihe: Määrittely ja suunnittelu
+## Projektin 1. vaihe: Määrittely ja suunnittelu
 
-Perheille suunnattu talouden seurantasovellus. Sovellus auttaa perheitä hallitsemaan talouttaan tehokkaasti tarjoamalla työkalut budjetointiin, tulojen ja menojen seurantaan, säästötavoitteiden asettamiseen sekä yhteistyöhön perheen sisällä. 
-Sovellus tukee myös talouskasvatusta ja on suunniteltu helppokäyttöiseksi kiireisessä arjessa.
+Tavoitteena on luoda perheille suunnattu sovellus, joka tekee talouden hallinnasta helppoa ja motivoivaa. Sovellus auttaa rakentamaan taloudellista vakautta, säästämään tulevaisuutta varten ja tukee koko perheen osallistumista rahankäytön suunnitteluun.
+Sovelluksen keskeisiä ominaisuuksia ovat budjetin luominen, tulojen ja menojen seuranta, säästötavoitteiden asettaminen sekä selkeät visuaaliset näkymät taloustilanteesta. Lisäksi sovellus tarjoaa mahdollisuuden perheenjäsenten yhteiskäyttöön ja toimii työkaluna myös talouskasvatuksessa lapsille.
+Käyttöliittymä suunnitellaan kiireiseen arkeen sopivaksi: sen tulee olla nopea, selkeä ja helposti ymmärrettävä. Näin sovellusta on mahdollista käyttää säännöllisesti myös silloin, kun aikaa on vähän. Sovelluksen tavoitteena on madaltaa kynnystä talouden hallintaan ja tukea perheitä pitkällä aikavälillä.
