@@ -37,17 +37,20 @@ Navigaatio on sijoitettu yläreunaan, ja sen kautta käyttäjä pääsee siirtym
 Etusivulla on kalenterinäkymä, johon käyttäjä voi lisätä päiväkohtaisia kuluja. Päivät, jolloin ei ole käytetty rahaa, korostuvat vihreällä ikonilla kannustaen säästämiseen. Päivämäärän hover-efekti tuo esiin kyseisen päivän vihreällä reunuksella, joka parantaa käytettävyyttä. Säästötavoitteiden eteneminen näkyy visuaalisena palkkina etusivulla, mikä auttaa käyttäjää hahmottamaan oman taloudellisen kehityksensä reaaliajassa.
 
 Etusivu:
+
 <img src="https://github.com/user-attachments/assets/5a6f8e9e-bb3a-47a0-80e2-712c007ec79f" width="200"/>
 
 Tulojen hallinta on toteutettu erillisessä välilehdessä, jossa käyttäjä voi lisätä tuloja ja tarkastella niitä. Osio täyttää monia käytettävyyden heuristiikkoja, kuten tilan näkyvyys, tosielämän vastaavuus ja virheiden estäminen. Lomakkeet ilmoittavat virheistä selkeästi, ja esimerkiksi negatiivisen summan lisääminen estetään näkyvällä varoituksella.
 
 Tulot välilehti:
-![image](https://github.com/user-attachments/assets/8ef88c60-1f42-49c6-a826-21e521db7ad8)
+
+<img src="https://github.com/user-attachments/assets/8ef88c60-1f42-49c6-a826-21e521db7ad8" width="200"/>
 
 Virhetilanteet on otettu huomioon siten, että sovellus antaa välittömän palautteen ja auttaa käyttäjää korjaamaan tilanteen. Tämä lisää sovelluksen luotettavuutta ja käytettävyyttä erityisesti tilanteissa, joissa käyttäjä tekee inhimillisiä virheitä.
 
 Muissa välilehdissä, kuten Menot ja Säästö, on noudatettu samoja suunnitteluperiaatteita. Käyttöliittymä säilyy läpi sovelluksen visuaalisesti rauhallisena ja informatiivisena. Vähemmän käytetyt osiot on piilotettu valikon taakse, mikä tukee minimalistista käyttöliittymäsuunnittelua.
 
-Menot välilehti:                                                                            Säästö välilehti:
-![image](https://github.com/user-attachments/assets/27413648-2e50-45af-b9e5-cba5803aee70)   ![image](https://github.com/user-attachments/assets/0b73cf44-6682-4591-a3e3-e184adc297da)
+Menot välilehti:                                                                                           Säästö välilehti:
+
+<img src="https://github.com/user-attachments/assets/27413648-2e50-45af-b9e5-cba5803aee70" width="200"/>   <img src="https://github.com/user-attachments/assets/0b73cf44-6682-4591-a3e3-e184adc297da" width="200"/>
 
