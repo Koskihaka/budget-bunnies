@@ -37,7 +37,7 @@ Navigaatio on sijoitettu yläreunaan, ja sen kautta käyttäjä pääsee siirtym
 Etusivulla on kalenterinäkymä, johon käyttäjä voi lisätä päiväkohtaisia kuluja. Päivät, jolloin ei ole käytetty rahaa, korostuvat vihreällä ikonilla kannustaen säästämiseen. Päivämäärän hover-efekti tuo esiin kyseisen päivän vihreällä reunuksella, joka parantaa käytettävyyttä. Säästötavoitteiden eteneminen näkyy visuaalisena palkkina etusivulla, mikä auttaa käyttäjää hahmottamaan oman taloudellisen kehityksensä reaaliajassa.
 
 Etusivu:
-<img src="https://github.com/user-attachments/assets/5a6f8e9e-bb3a-47a0-80e2-712c007ec79f" width="400"/>
+<img src="https://github.com/user-attachments/assets/5a6f8e9e-bb3a-47a0-80e2-712c007ec79f" width="800"/>
 
 Tulojen hallinta on toteutettu erillisessä välilehdessä, jossa käyttäjä voi lisätä tuloja ja tarkastella niitä. Osio täyttää monia käytettävyyden heuristiikkoja, kuten tilan näkyvyys, tosielämän vastaavuus ja virheiden estäminen. Lomakkeet ilmoittavat virheistä selkeästi, ja esimerkiksi negatiivisen summan lisääminen estetään näkyvällä varoituksella.
 
