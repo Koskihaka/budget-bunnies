@@ -5,5 +5,6 @@ Sovelluksen keskeisiä ominaisuuksia ovat budjetin luominen, tulojen ja menojen 
 Käyttöliittymä suunnitellaan kiireiseen arkeen sopivaksi: sen tulee olla nopea, selkeä ja helposti ymmärrettävä. Näin sovellusta on mahdollista käyttää säännöllisesti myös silloin, kun aikaa on vähän. Sovelluksen tavoitteena on madaltaa kynnystä talouden hallintaan ja tukea perheitä pitkällä aikavälillä.
 
 ## Käyttäjäpersoonat
-![userprofile1](https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836)
+<img src="https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836" width="300"/>
+
 
