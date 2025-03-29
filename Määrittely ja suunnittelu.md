@@ -7,4 +7,5 @@ Käyttöliittymä suunnitellaan kiireiseen arkeen sopivaksi: sen tulee olla nope
 ## Käyttäjäpersoonat
 <img src="https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836" width="600"/>
 
+<img src="https://github.com/user-attachments/assets/79c2f337-6dcb-4169-b689-ab5f26887073" width="600"/>
 
