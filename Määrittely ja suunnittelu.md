@@ -16,7 +16,8 @@ Projektissa on määritelty kolme erilaista käyttäjäpersoonaa, jotka edustava
 Nämä käyttäjäpersoonat auttavat hahmottamaan sovelluksen todelliset käyttötarpeet ja varmistamaan, että lopputulos palvelee aidosti niitä ihmisiä, joille sovellus on suunnattu.
 Alla on esitetty visuaaliset käyttäjäpersoonakortit, joissa kuvataan tarkemmin kunkin käyttäjän tausta, tavoitteet ja käyttötavat.
 
-<img src="https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836" width="400"/> <img src="https://github.com/user-attachments/assets/def433e4-f914-4cdb-a4b7-db4961194cae" width="400"/> <img src="https://github.com/user-attachments/assets/62b31b4b-1065-4360-b42d-ed4921d01129" width="400"/>
+<img src="https://github.com/user-attachments/assets/b58b4683-123b-498f-8c8e-377f41653836" width="500"/> <img src="https://github.com/user-attachments/assets/def433e4-f914-4cdb-a4b7-db4961194cae" width="500"/> <img src="https://github.com/user-attachments/assets/7a786b12-fd5e-48f2-a0fa-400de628a4c2" width="500"/>
+
 
 ## Käyttötapaukset ja käyttötilanteet
 
