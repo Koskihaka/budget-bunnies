@@ -37,6 +37,7 @@ Jälkitilanne:
 - Käyttäjä näkee nopeasti, minä päivinä rahaa on käytetty ja minä päivinä ei.
 - Käyttäjä voi hahmottaa arjen kulutustottumuksiaan ja motivoitua säästämiseen.
 - Säästötavoitteen visuaalinen eteneminen tuo palautetta käyttäytymisestä.
+  
 
 **Käyttötapaus 2: Tulojen ja menojen lisääminen perhekohtaisesti**
 
@@ -61,8 +62,9 @@ Vaiheet – Menojen lisääminen
 Jälkitilanne:
 - Sovellus näyttää kokonaissummat sekä tuloille että menoille ja mahdollistaa vertailun.
 - Käyttäjät voivat helposti seurata, kuinka paljon rahaa on tullut ja kuinka paljon sitä on kulunut.
+  
 
-**Käyttötapaus 3: Budjetin laatiminen ja seuraaminen **
+**Käyttötapaus 3: Budjetin laatiminen ja seuraaminen**
 
 Tavoite: Käyttäjä laatii kuukausibudjetin eri menoerille ja seuraa, miten hyvin toteutunut kulutus pysyy asetetuissa rajoissa.
 
@@ -78,6 +80,7 @@ Jälkitilanne:
 - Käyttäjä näkee, kuinka hyvin hän on pysynyt budjetissaan eri osa-alueilla.
 - Ylitykset ja alitukset tulevat selkeästi esiin visuaalisessa esityksessä.
 - Budjetointi tukee suunnitelmallista rahankäyttöä ja taloudellisten tavoitteiden saavuttamista.
+  
 
 **Käyttötapaus 4: Säästötavoitteen asettaminen ja seuraaminen**
 
@@ -95,6 +98,7 @@ Vaiheet:
 Jälkitilanne:
 Sovellus näyttää selkeästi, paljonko tavoitesummasta on saavutettu.
 Käyttäjä motivoituu jatkamaan säästämistä ja näkee konkreettisesti edistymisensä.
+
 
 ## Käyttöliittymän prototyyppi
 
