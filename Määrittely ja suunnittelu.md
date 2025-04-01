@@ -22,7 +22,8 @@ Alla on esitetty visuaaliset käyttäjäpersoonakortit, joissa kuvataan tarkemmi
 
 Sovelluksen käyttötapaukset pohjautuvat käyttäjäpersoonien arkeen ja tarpeisiin. Kaikille käyttäjille yhteistä on tarve hallita arjen rahankäyttöä ja hahmottaa oma taloudellinen tilanne. Alla on kuvattu keskeiset käyttötapaukset vaiheittain.
 
-**Käyttötapaus 1:** Päivittäisen rahankäytön seuraaminen kalenterinäkymässä
+**Käyttötapaus 1: Päivittäisen rahankäytön seuraaminen kalenterinäkymässä**
+
 Tavoite: Käyttäjä seuraa arjen kulutustaan päiväkohtaisesti ja saa visuaalista palautetta säästämisestä tai rahan käytöstä.
 
 Vaiheet:
@@ -38,6 +39,7 @@ Jälkitilanne:
 - Säästötavoitteen visuaalinen eteneminen tuo palautetta käyttäytymisestä.
 
 **Käyttötapaus 2: Tulojen ja menojen lisääminen perhekohtaisesti**
+
 Tavoite: Käyttäjä lisää sovellukseen omat tai perheenjäsenen tulot ja menot, jotta sovellus voi näyttää ajantasaisen kokonaistilanteen ja tukea talouden hallintaa.
 
 Vaiheet – Tulojen lisääminen
@@ -60,7 +62,8 @@ Jälkitilanne:
 - Sovellus näyttää kokonaissummat sekä tuloille että menoille ja mahdollistaa vertailun.
 - Käyttäjät voivat helposti seurata, kuinka paljon rahaa on tullut ja kuinka paljon sitä on kulunut.
 
-**Käyttötapaus 3:** Budjetin laatiminen ja seuraaminen
+**Käyttötapaus 3: Budjetin laatiminen ja seuraaminen **
+
 Tavoite: Käyttäjä laatii kuukausibudjetin eri menoerille ja seuraa, miten hyvin toteutunut kulutus pysyy asetetuissa rajoissa.
 
 Vaiheet:
@@ -76,7 +79,8 @@ Jälkitilanne:
 - Ylitykset ja alitukset tulevat selkeästi esiin visuaalisessa esityksessä.
 - Budjetointi tukee suunnitelmallista rahankäyttöä ja taloudellisten tavoitteiden saavuttamista.
 
-**Käyttötapaus 4:** Säästötavoitteen asettaminen ja seuraaminen
+**Käyttötapaus 4: Säästötavoitteen asettaminen ja seuraaminen**
+
 Tavoite: Käyttäjä asettaa henkilökohtaisen tai perhekohtaisen säästötavoitteen ja seuraa sen etenemistä sovelluksessa.
 
 Vaiheet:
