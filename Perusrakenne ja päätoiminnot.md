@@ -1,28 +1,28 @@
 # Projektivaihe 2 – Perusrakenne ja päätoiminnot
 
 
-1. Ympäristö
+## 1. Ympäristö
 
 
-2. Backend
+## 2. Backend
 
 
-3. Frontend
+## 3. Frontend
 
 
-4. Tietokanta
+## 4. Tietokanta
 
 
-5. Perusrakenne ja arkkitehtuuri
+## 5. Perusrakenne ja arkkitehtuuri
 
 
-6. Toiminnot
+## 6. Toiminnot
 
 
-7. Koodin laatu ja dokumentointi
+## 7. Koodin laatu ja dokumentointi
 
 
-8. Testaus ja virheenkäsittely
+## 8. Testaus ja virheenkäsittely
 
 
-9. Käyttöliittymä ja vuorovaikutus
+## 9. Käyttöliittymä ja vuorovaikutus
