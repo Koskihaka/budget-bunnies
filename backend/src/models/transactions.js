@@ -1,23 +1,31 @@
-const pool = require('../config/db');
+const pool = require('../config/db')
 
-async function getAll(userId) {
+// Lisää yksi tapahtuma
+async function create({ user_id, amount, date, category }) {
   const { rows } = await pool.query(
-    `SELECT * FROM transactions
+    `INSERT INTO transactions (user_id, amount, date, category)
+     VALUES ($1, $2, $3, $4)
+     RETURNING id, user_id, amount, date, category`,
+    [user_id, amount, date, category]
+  )
+  return rows[0]
+}
+
+// Hakee kaikki tapahtumat kuukauden ajalta käyttäjälle
+async function getAllByMonth(userId, year, month) {
+  const { rows } = await pool.query(
+    `SELECT id, amount, date
+     FROM transactions
      WHERE user_id = $1
-     ORDER BY date DESC`,
-    [userId]
-  );
-  return rows;
+       AND EXTRACT(YEAR FROM date) = $2
+       AND EXTRACT(MONTH FROM date) = $3
+     ORDER BY date`,
+    [userId, year, month]
+  )
+  return rows
 }
 
-async function create({ user_id, amount, category, date, description }) {
-  const { rows } = await pool.query(
-    `INSERT INTO transactions (user_id, amount, category, date, description)
-     VALUES ($1,$2,$3,$4,$5)
-     RETURNING *`,
-    [user_id, amount, category, date, description]
-  );
-  return rows[0];
+module.exports = {
+  create,
+  getAllByMonth
 }
-
-module.exports = { getAll, create };

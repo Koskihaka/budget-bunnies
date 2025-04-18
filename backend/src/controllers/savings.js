@@ -1,22 +1,44 @@
-const Savings = require('../models/savings');
+const Savings = require('../models/savings')
 
-async function get(req, res, next) {
+async function getSavings(req, res, next) {
   try {
-    const s = await Savings.getSavings(req.user.id);
-    res.json(s);
+    const data = await Savings.getSavings(req.user.id)
+    res.json(data)
   } catch (err) {
-    next(err);
+    next(err)
   }
 }
 
 async function setGoal(req, res, next) {
   try {
-    const { goal } = req.body;
-    const s = await Savings.setGoal(req.user.id, goal);
-    res.json(s);
+    const data = await Savings.setGoal(req.user.id, req.body.goal)
+    res.json(data)
   } catch (err) {
-    next(err);
+    next(err)
   }
 }
 
-module.exports = { get, setGoal };
+async function addEntry(req, res, next) {
+  try {
+    const data = await Savings.addEntry({ user_id: req.user.id, ...req.body })
+    res.status(201).json(data)
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function getEntries(req, res, next) {
+  try {
+    const data = await Savings.getAllEntries(req.user.id)
+    res.json(data)
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = {
+  get: getSavings,
+  setGoal,
+  addEntry,
+  getEntries
+}

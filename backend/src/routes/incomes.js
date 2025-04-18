@@ -2,7 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const ctrl    = require('../controllers/incomes');
 
-router.get('/',  ctrl.list);   // /api/incomes?year=2025&month=4
-router.post('/', ctrl.add);    // { amount, category, date, description }
+router.get('/',  ctrl.list); 
+router.post('/', ctrl.add);   
+router.delete('/:id', ctrl.remove)
 
 module.exports = router;

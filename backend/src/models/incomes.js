@@ -1,5 +1,6 @@
-const pool = require('../config/db');
+const pool = require('../config/db')
 
+// Hakee kaikki tulot kirjautuneelle käyttäjälle tietyltä kuukaudelta
 async function getAll(userId, year, month) {
   const { rows } = await pool.query(
     `SELECT date, SUM(amount) AS amount
@@ -9,17 +10,22 @@ async function getAll(userId, year, month) {
        AND EXTRACT(MONTH FROM date)= $3
      GROUP BY date ORDER BY date`,
     [userId, year, month]
-  );
-  return rows;
+  )
+  return rows
 }
 
-async function create({ user_id, amount, category, date, description }) {
+// Lisää uusi tulo tietokantaan
+async function create({ user_id, amount, name, date, description }) {
   const { rows } = await pool.query(
-    `INSERT INTO incomes(user_id, amount, category, date, description)
-     VALUES($1,$2,$3,$4,$5) RETURNING *`,
-    [user_id, amount, category, date, description]
-  );
-  return rows[0];
+    `INSERT INTO incomes(user_id, amount, name, date, description)
+     VALUES($1, $2, $3, $4, $5)
+     RETURNING *`,
+    [user_id, amount, name, date, description]
+  )
+  return rows[0]
 }
 
-module.exports = { getAll, create };
+async function remove(user_id, id) {
+  await pool.query(`DELETE FROM incomes WHERE id = $1 AND user_id = $2`, [id, user_id])
+}
+module.exports = { getAll, create, remove }

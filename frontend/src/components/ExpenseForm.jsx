@@ -17,8 +17,16 @@ export default function ExpenseForm({ onSubmit }) {
       return
     }
     setError('')
-    await onSubmit({ amount: Number(amount), category, date, description })
-    setAmount(''); setCategory(''); setDate(''); setDesc('')
+    await onSubmit({
+      amount: Number(amount),
+      category,
+      date,
+      description
+    })
+    setAmount('')
+    setCategory('')
+    setDate('')
+    setDesc('')
   }
 
   return (
@@ -28,14 +36,15 @@ export default function ExpenseForm({ onSubmit }) {
         <Input
           type="number"
           value={amount}
-          onChange={e=>setAmount(e.target.value)}
+          onChange={e => setAmount(e.target.value)}
         />
       </FormControl>
       <FormControl isInvalid={!!error} mb={2}>
         <FormLabel>Kategoria</FormLabel>
         <Input
+          placeholder="Esim. Ruoka, Vuokra..."
           value={category}
-          onChange={e=>setCategory(e.target.value)}
+          onChange={e => setCategory(e.target.value)}
         />
       </FormControl>
       <FormControl isInvalid={!!error} mb={2}>
@@ -43,14 +52,15 @@ export default function ExpenseForm({ onSubmit }) {
         <Input
           type="date"
           value={date}
-          onChange={e=>setDate(e.target.value)}
+          onChange={e => setDate(e.target.value)}
         />
       </FormControl>
       <FormControl mb={2}>
         <FormLabel>Kuvaus (valinnainen)</FormLabel>
         <Input
+          placeholder="Esim. Viikon ruokaostokset"
           value={description}
-          onChange={e=>setDesc(e.target.value)}
+          onChange={e => setDesc(e.target.value)}
         />
       </FormControl>
       {error && <FormErrorMessage mb={2}>{error}</FormErrorMessage>}

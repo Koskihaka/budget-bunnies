@@ -49,12 +49,18 @@ export async function fetchIncomes(year, month) {
   return res.json();
 }
 
-export async function createIncome({ amount, category, date, description }) {
+export async function createIncome({ amount, name, date, description }) {
   const res = await authFetch('/api/incomes', {
     method: 'POST',
-    body: JSON.stringify({ amount, category, date, description }),
+    body: JSON.stringify({ amount, name, date, description }),
   });
   return res.json();
+}
+export async function deleteIncome(id) {
+  const res = await authFetch(`/api/incomes/${id}`, {
+    method: 'DELETE',
+  })
+  return res.json()
 }
 
 // ————— Expenses —————
@@ -71,8 +77,23 @@ export async function createExpense({ amount, category, date, description }) {
   });
   return res.json();
 }
+export async function deleteExpense(id) {
+  const res = await authFetch(`/api/expenses/${id}`, {
+    method: 'DELETE'
+  })
 
+  if (!res.ok) {
+    throw new Error('Poisto epäonnistui')
+  }
+}
 // ————— Savings —————
+export async function addSavingEntry({ amount, date, description }) {
+  const res = await authFetch('/api/savings/entry', {
+    method: 'POST',
+    body: JSON.stringify({ amount, date, description }),
+  })
+  return res.json()
+}
 
 export async function fetchSavings() {
   const res = await authFetch('/api/savings');
@@ -86,3 +107,8 @@ export async function setSavingsGoal({ goal }) {
   });
   return res.json();
 }
+export async function fetchSavingEntries() {
+  const res = await authFetch('/api/savings/entries')
+  return res.json()
+}
+

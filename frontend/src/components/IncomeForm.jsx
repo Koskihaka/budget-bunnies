@@ -4,20 +4,28 @@ import {
 } from '@chakra-ui/react'
 
 export default function IncomeForm({ onSubmit }) {
-  const [amount, setAmount]     = useState('')
-  const [category, setCategory] = useState('')
-  const [date, setDate]         = useState('')
-  const [description, setDesc]  = useState('')
-  const [error, setError]       = useState('')
+  const [amount, setAmount]   = useState('')
+  const [name, setName]       = useState('') 
+  const [date, setDate]       = useState('')
+  const [description, setDesc] = useState('')
+  const [error, setError]     = useState('')
 
   const handle = async () => {
-    if (!amount || !category || !date) {
+    if (!amount || !name || !date) {
       setError('Täytä kaikki pakolliset kentät')
       return
     }
     setError('')
-    await onSubmit({ amount: Number(amount), category, date, description })
-    setAmount(''); setCategory(''); setDate(''); setDesc('')
+    await onSubmit({
+      amount: Number(amount),
+      name,
+      date,
+      description
+    })
+    setAmount('')
+    setName('')
+    setDate('')
+    setDesc('')
   }
 
   return (
@@ -30,13 +38,16 @@ export default function IncomeForm({ onSubmit }) {
           onChange={e => setAmount(e.target.value)}
         />
       </FormControl>
+
       <FormControl isInvalid={!!error} mb={2}>
-        <FormLabel>Kategoria</FormLabel>
+        <FormLabel>Tulon nimi</FormLabel>
         <Input
-          value={category}
-          onChange={e => setCategory(e.target.value)}
+          placeholder="Esim. Palkka, Sivuansio..."
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
       </FormControl>
+
       <FormControl isInvalid={!!error} mb={2}>
         <FormLabel>Päivämäärä</FormLabel>
         <Input
@@ -45,14 +56,9 @@ export default function IncomeForm({ onSubmit }) {
           onChange={e => setDate(e.target.value)}
         />
       </FormControl>
-      <FormControl mb={2}>
-        <FormLabel>Kuvaus (valinnainen)</FormLabel>
-        <Input
-          value={description}
-          onChange={e => setDesc(e.target.value)}
-        />
-      </FormControl>
+
       {error && <FormErrorMessage mb={2}>{error}</FormErrorMessage>}
+
       <Button colorScheme="green" onClick={handle}>Lisää tulo</Button>
     </Box>
   )

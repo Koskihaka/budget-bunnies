@@ -1,29 +1,37 @@
-import {
-    Table, Thead, Tbody, Tr, Th, Td, Box
-  } from '@chakra-ui/react'
-  
-  export default function IncomeList({ items }) {
-    if (!items.length) {
-      return <Box>Ei tuloja</Box>
-    }
-    return (
-      <Table size="sm">
-        <Thead>
-          <Tr>
-            <Th>Päivä</Th><Th>Summa</Th><Th>Kategoria</Th><Th>Kuvaus</Th>
+import { Table, Thead, Tbody, Tr, Th, Td, IconButton } from "@chakra-ui/react";
+import { format } from "date-fns";
+import { FaTrash } from "react-icons/fa";
+
+export default function IncomeList({ items, onDelete }) {
+  return (
+    <Table variant="simple">
+      <Thead>
+        <Tr>
+          <Th>Päivämäärä</Th>
+          <Th>Nimi</Th>
+          <Th>Summa (€)</Th>
+          <Th>Poista</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {items.map((item) => (
+          <Tr key={item.id}>
+            <Td>{format(new Date(item.date), "d.M.yyyy")}</Td>
+            <Td>{item.name}</Td>
+            <Td>{item.amount}</Td>
+            <Td>
+              <IconButton
+                icon={<FaTrash />}
+                colorScheme="red"
+                size="sm"
+                onClick={() => onDelete(item)}
+                aria-label="Poista"
+              />
+            </Td>
           </Tr>
-        </Thead>
-        <Tbody>
-          {items.map(tx => (
-            <Tr key={tx.id || tx.date}>
-              <Td>{tx.date}</Td>
-              <Td>{tx.amount} €</Td>
-              <Td>{tx.category}</Td>
-              <Td>{tx.description || '-'}</Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
-    )
-  }
-  
+        ))}
+      </Tbody>
+    </Table>
+  );
+}
+

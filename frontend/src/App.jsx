@@ -1,10 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import LoginPage       from './pages/LoginPage'
-import DashboardPage   from './pages/DashboardPage'
-import IncomePage      from './pages/IncomePage'
-import ExpensePage     from './pages/ExpensePage'
-import SavingsPage     from './pages/SavingsPage'
+import LoginPage from './pages/LoginPage'
+import DashboardPage from './pages/DashboardPage'
+import IncomePage from './pages/IncomePage'
+import ExpensePage from './pages/ExpensePage'
+import SavingsPage from './pages/SavingsPage'
 import ProtectedRoutes from './components/ProtectedRoute'
+import Navbar from './components/Navbar'
+import ProfilePage from './pages/ProfilePage'
 
 export default function App() {
   return (
@@ -15,19 +17,56 @@ export default function App() {
 
       {/* Suojatut reitit */}
       <Route path="/" element={<ProtectedRoutes />}>
-        {/* Dashboard kun URL on täsmälleen "/" */}
-        <Route index element={<DashboardPage />} />
-
-        {/* Muut välilehdet relatiivisilla poluilla */}
-        <Route path="tulot" element={<IncomePage />} />
-        <Route path="menot" element={<ExpensePage />} />
-        <Route path="saasto" element={<SavingsPage />} />
-
-        {/* Jos suojattuun alueeseen mennään väärällä polulla, ohjataan takaisin Dashboardiin */}
+        <Route
+          index
+          element={
+            <>
+              <Navbar />
+              <DashboardPage />
+            </>
+          }
+        />
+        <Route
+          path="tulot"
+          element={
+            <>
+              <Navbar />
+              <IncomePage />
+            </>
+          }
+        />
+        <Route
+          path="menot"
+          element={
+            <>
+              <Navbar />
+              <ExpensePage />
+            </>
+          }
+        />
+        <Route
+          path="saasto"
+          element={
+            <>
+              <Navbar />
+              <SavingsPage />
+            </>
+          }
+        />
+        <Route
+          path="profiili"
+          element={
+            <>
+              <Navbar />
+              <ProfilePage />
+            </>
+          }
+        />
+        {/* Suojatun alueen virheellinen osoite -> Dashboard */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
 
-      {/* Kaikki muut reitit ohjataan login‑sivulle */}
+      {/* Kaikki muu ohjataan login-sivulle */}
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )

@@ -5,6 +5,7 @@ const jwt     = require('jsonwebtoken');
 const pool    = require('./config/db');
 
 const authRouter = require('./routes/auth');
+const userRouter = require('./routes/users');
 const txRouter   = require('./routes/transactions');
 const incRouter  = require('./routes/incomes');
 const expRouter  = require('./routes/expenses');
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 });
 
 // ——— 4) Suojatut domain‑reitit ———
+app.use('/api/user',        userRouter);
 app.use('/api/transactions', txRouter);
 app.use('/api/incomes',      incRouter);
 app.use('/api/expenses',     expRouter);

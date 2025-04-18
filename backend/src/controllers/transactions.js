@@ -1,22 +1,42 @@
-const Tx = require('../models/transactions');
+const Tx = require('../models/transactions')
 
+// Listaa kirjautuneen käyttäjän kaikki tapahtumat tietylle kuukaudelle
 async function list(req, res, next) {
   try {
-    // tässä voisi olla JWT‑auth, mutta testivaiheessa hardkoodataan user_id
-    const data = await Tx.getAll(req.query.user_id || 1);
-    res.json(data);
+    const userId = req.user.id
+    const { year, month } = req.query
+
+    if (!year || !month) {
+      return res.status(400).json({ error: 'year ja month puuttuvat' })
+    }
+
+    const data = await Tx.getAllByMonth(userId, year, month)
+    res.json(data)
   } catch (err) {
-    next(err);
+    next(err)
   }
 }
 
+// Lisää uuden tapahtuman kirjautuneelle käyttäjälle
 async function add(req, res, next) {
   try {
-    const newTx = await Tx.create(req.body);
-    res.status(201).json(newTx);
+    const { amount, date } = req.body
+
+    if (amount === undefined || amount === null || date === undefined || date === null) {
+      return res.status(400).json({ error: 'amount ja date vaaditaan' })
+    }
+
+    const newTx = await Tx.create({
+      user_id: req.user.id,
+      amount,
+      date,
+      category: 'muut'  // ← lisätään oletus
+    })
+
+    res.status(201).json(newTx)
   } catch (err) {
-    next(err);
+    next(err)
   }
 }
 
-module.exports = { list, add };
+module.exports = { list, add }
