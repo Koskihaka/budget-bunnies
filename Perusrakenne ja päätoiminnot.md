@@ -71,33 +71,44 @@ Käytännön tasolla tietokanta luodaan migraatiotiedostojen avulla (esim. creat
 
 ## 5. Perusrakenne ja arkkitehtuuri
 
+Sovellus on jaettu frontend- ja backend-osuuksiin, jotka keskustelevat keskenään RESTful API:n kautta. Arkkitehtuuri noudattaa modernia, komponenttipohjaista lähestymistapaa, joka tukee sovelluksen skaalautuvuutta ja ylläpidettävyyttä.
 
-Sovelluksen perusrakenne on jaettu frontendin ja backendin välillä, ja niiden välinen kommunikaatio tapahtuu RESTful API:n kautta. Arkkitehtuuri perustuu moderniin, komponenttipohjaiseen lähestymistapaan, joka tukee skaalautuvuutta ja ylläpidettävyyttä.
+### Yleiskuvaus
 
-### Yleiskuvaus arkkitehtuurista
+**Frontend** on rakennettu Reactin ympärille. Komponenttipohjainen rakenne mahdollistaa koodin uudelleenkäytön, helpottaa ylläpitoa ja tukee uusien ominaisuuksien hallittua lisäämistä. Navigointi eri näkymien välillä toteutetaan React Routerilla, ja käyttöliittymän tyylitys sekä responsiivisuus on hoidettu Chakra UI -kirjaston avulla. Frontendin ja backendin välinen viestintä hoidetaan axios-kirjastolla.
 
-- **Frontend**: Sovelluksen käyttöliittymä on rakennettu Reactin ympärille, jossa hyödynnetään komponenttipohjaista rakennetta. Näin mahdollistetaan koodin uudelleenkäytettävyys ja helpotetaan sovelluksen laajentamista ja ylläpitoa. Frontendin ja backendin välinen yhteys tapahtuu API-kutsujen kautta, ja komponenttien välinen navigointi hallitaan React Routerilla.
+**Backend** on toteutettu Node.js:n ja Express.js:n avulla. Se vastaa käyttäjien autentikoinnista (JWT), tietojen käsittelystä ja tallennuksesta PostgreSQL-tietokantaan. Backend toimii REST API -rajapinnan kautta ja palauttaa tarvittavan datan frontendille. Tietomallit on suunniteltu relaatiopohjaisiksi, ja niiden hallinta hoidetaan SQL-migraatioiden avulla.
 
-- **Backend**: Backend on toteutettu Node.js:llä ja Express.js-kehyksellä. Backendin vastuulla on käyttäjien autentikointi, tietojen käsittely, tallennus PostgreSQL-tietokantaan sekä oikean tiedon palauttaminen frontendille. Backend toimii REST API:n kautta, ja tietomallit on rakennettu relaatiopohjaisiksi.
+### Rakenne ja moduulit
 
-### Koko sovelluksen rakenne
+#### Frontend
 
-- **Frontend**: Käyttöliittymän responsiivisuus ja tyylit on toteutettu Chakra UI -kirjaston avulla, ja sovelluksen pääkomponentit on jaettu järkeviin osiin (esim. lomakkeet, listat ja näkymät). Frontendin ja backendin välinen viestintä hoidetaan axios-kirjastolla, joka tekee HTTP-pyyntöjä API-reiteille.
+- **Komponentit**: näkymät, lomakkeet, listat yms.
+- **Tyylitys**: Chakra UI
+- **Navigointi**: React Router
+- **Tiedonhaku**: axios
 
-- **Backend**: Backend on jaettu selkeästi eri kansioihin, jotka käsittelevät eri toiminnallisuuksia (esim. reitit, kontrollit, mallit). Tiedon käsittely tapahtuu controller-tasolla, jossa käytetään erillisiä reittejä (esim. /api/incomes, /api/expenses). Tietokannan rakenne on jaettu eri tauluihin, ja tietomigraatiot hoidetaan migraatiotiedostoilla, jotka varmistavat tietokannan rakenteen versionhallinnan.
+#### Backend
 
-### Arkkitehtuurin keskeiset osat:
+- **Kansiot**: `routes/`, `controllers/`, `models/`, `config/`
+- **Controllerit**: käsittelevät pyynnöt ja vastaavat oikeaan logiikkaan
+- **Reitit**: yhdistävät HTTP-pyynnöt oikeisiin controllereihin
+- **Tietokanta**: PostgreSQL, yhteydet määritetty `db.js`-tiedostossa
+- **Migraatiot**: varmistavat rakenteiden yhdenmukaisuuden ja versionhallinnan
 
-- **Modulaarisuus**: Sovellus on jaettu selkeästi erillisiin moduuleihin (frontend, backend), ja molemmissa osissa hyödynnetään modulaarista rakennetta (React-komponentit, Express-reitit).
-- **Tietokannan hallinta**: PostgreSQL on valittu tietokannaksi, ja tietomallit on rakennettu relaatiopohjaisiksi. Tietokannan migraatiot mahdollistavat versionhallinnan ja rakenteiden seurannan.
-- **Autentikointi ja valtuutus**: Käyttäjien tunnistautuminen ja pääsynhallinta toteutetaan JWT:llä (JSON Web Token). Tämä tarjoaa turvallisen tavan hallita suojattuja reittejä ja käyttäjätietoja.
-- **Virheenkäsittely ja lokitus**: Virhetilanteet käsitellään selkeästi HTTP-statusten ja virheilmoitusten kautta. Backendissä on käytössä virheenkäsittelylogiikka, joka varmistaa oikeat statukset virhetilanteissa (esim. 400, 401, 500).
-  
-### Sovelluksen skaalautuvuus
 
-- **Frontendin skaalautuvuus**: Komponenttipohjainen rakenne tekee sovelluksesta helposti laajennettavan, ja uuden toiminnallisuuden lisääminen voidaan tehdä hallitusti.
-- **Backendin skaalautuvuus**: Backendin rakenne tukee sovelluksen kasvua ja laajentamista. Reitit ja kontrollit on suunniteltu niin, että niitä on helppo lisätä ja muokata, kun sovelluksen vaatimukset muuttuvat.
+### Arkkitehtuurin keskeiset periaatteet
 
+- **Modulaarisuus**: Selkeä jako frontendin ja backendin osiin sekä näiden sisäinen modulaarinen rakenne mahdollistaa sovelluksen hallitun kasvun.
+- **Tietokanta**: Relaatiopohjainen PostgreSQL mahdollistaa tehokkaan ja turvallisen tietojen tallennuksen.
+- **Autentikointi**: JWT-tunnisteilla suojataan suojatut reitit ja käyttäjän istunto.
+- **Virheenkäsittely**: Virhetilanteet käsitellään HTTP-statuksilla (esim. 400, 401, 500) ja selkeillä virheilmoituksilla. Tämä parantaa käyttäjäkokemusta ja helpottaa sovelluksen debuggausta.
+
+
+### Skaalautuvuus
+
+- **Frontendin skaalautuvuus**: Komponenttipohjainen rakenne tukee sovelluksen kasvua ja helpottaa uusien näkymien ja ominaisuuksien lisäämistä.
+- **Backendin skaalautuvuus**: Uusia reittejä ja toimintoja voidaan lisätä helposti `controller`- ja `routes`-kansioihin. Rakenteen selkeys tukee ylläpitoa ja jatkokehitystä.
 
 
 ## 6. Toiminnot
