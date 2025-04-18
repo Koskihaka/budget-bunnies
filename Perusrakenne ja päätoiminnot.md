@@ -11,7 +11,33 @@ Sovelluksen käynnistys ja ylläpito tapahtuvat komentoriviltä, tyypillisesti e
 Projektia ei ole vielä viety pilvipalveluun tai virtuaalikoneeseen, vaan se toimii täysin paikallisesti.
 
 ## 2. Backend
+Teknologia: Sovelluksen backend on toteutettu Node.js-ympäristössä käyttäen Express.js-kehystä, mikä mahdollistaa REST API -rajapintojen luomisen tehokkaasti.
 
+API-rakenteet: Backend palvelee frontendia REST-rajapinnan kautta. Käytössä on eri reititykset tuloille (/api/incomes), menoille (/api/expenses), säästöille (/api/savings), tapahtumille (/api/transactions) ja käyttäjähallinnalle (/api/auth).
+
+Tietoturva ja autentikointi: Käyttäjien kirjautuminen ja rekisteröityminen on toteutettu, ja järjestelmä tukee JWT (JSON Web Token) -autentikointia suojattujen resurssien käyttämiseen.
+
+Tietokantayhteys: Backend on yhdistetty PostgreSQL-tietokantaan, ja tietomallit on rakennettu relaatiopohjaisesti. Yhteys hoidetaan erillisen db.js-tiedoston kautta.
+
+Tietomallit ja migraatiot:
+
+Tietokannan skeema on määritelty models-kansiossa.
+
+Tietorakenteet on luotu migraatiotiedostoilla, jotka varmistavat versionhallinnan ja rakenteiden yhdenmukaisuuden (migrations/-kansiossa mm. create-users.js, create-transactions.js jne.).
+
+Ohjelmointikieli: Backend on kirjoitettu JavaScriptillä.
+
+Virheenkäsittely: Reitityksissä ja ohjaimissa on käytössä virheenkäsittelylogiikka, joka palauttaa sopivat HTTP-statukset ja viestit virhetilanteissa (esim. 400, 401, 500).
+
+Tiedostorakenne:
+
+controllers/: Logiikka kunkin resurssin käsittelyyn (incomes, expenses jne.)
+
+routes/: Reititykset, jotka yhdistävät HTTP-pyynnöt oikeaan controlleriin
+
+models/: Tietokantataulujen määrittely
+
+config/: Yhteydet tietokantaan ym. asetukset
 
 ## 3. Frontend
 
