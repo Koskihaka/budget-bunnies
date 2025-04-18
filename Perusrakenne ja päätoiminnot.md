@@ -192,6 +192,21 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 - Värikoodaus auttaa tulkitsemaan tilannetta visuaalisesti – esim. vihreä väri tarkoittaa, että rahaa ei ole käytetty kyseisenä päivänä.
 
 
+### Toteuttamatta jääneet ominaisuudet
+
+Sovelluksen toteutuksessa tapahtui muutoksia alkuperäiseen suunnitelmaan nähden. Seuraavat toiminnallisuudet jäivät pois tai toteutettiin suppeampina:
+
+- **Budjetointi**: Budjetointiominaisuus, joka oli alun perin suunniteltu, jäi pois tästä versiosta.
+- **Perhetoiminnot**:  
+  - Tietojen jakaminen toiselle käyttäjälle (esim. puoliso tai huoltaja)  
+  - Lapsen säästötavoitteen lisääminen
+  - Ulkoasu
+      -Käyttöliittymän visuaalinen ilme jäi yksinkertaisemmaksi kuin alkuperäisessä suunnitelmassa hahmoteltiin.
+  - Rajalliset integraatiot
+      - Toiminnallisuudet eivät vielä keskustele täysin keskenään. Esimerkiksi:
+      - Kalenteriin syötetty käytetty rahasumma ei siirry automaattisesti menot-näkymään.
+
+
 ## 7. Koodin laatu ja dokumentointi
 
 ### Koodin jäsenneltävyys ja luettavuus
