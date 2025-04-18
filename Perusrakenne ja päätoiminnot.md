@@ -113,8 +113,6 @@ Sovellus on jaettu frontend- ja backend-osuuksiin, jotka keskustelevat keskenä�
 
 ## 6. Toiminnot
 
-## 6. Toiminnot
-
 Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen talouden hallintaan:
 
 ### Käyttäjänhallinta
