@@ -201,7 +201,7 @@ Sovelluksen toteutuksessa tapahtui muutoksia alkuperäiseen suunnitelmaan nähde
   - Tietojen jakaminen toiselle käyttäjälle (esim. puoliso tai huoltaja)  
   - Lapsen säästötavoitteen lisääminen
   - Ulkoasu
-      -Käyttöliittymän visuaalinen ilme jäi yksinkertaisemmaksi kuin alkuperäisessä suunnitelmassa hahmoteltiin.
+      - Käyttöliittymän visuaalinen ilme jäi yksinkertaisemmaksi kuin alkuperäisessä suunnitelmassa hahmoteltiin.
   - Rajalliset integraatiot
       - Toiminnallisuudet eivät vielä keskustele täysin keskenään. Esimerkiksi:
       - Kalenteriin syötetty käytetty rahasumma ei siirry automaattisesti menot-näkymään.
