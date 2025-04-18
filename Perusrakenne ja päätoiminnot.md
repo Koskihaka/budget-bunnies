@@ -41,6 +41,37 @@ config/: Yhteydet tietokantaan ym. asetukset
 
 ## 3. Frontend
 
+Sovelluksen frontend on toteutettu Reactilla. Valinta perustuu sen komponenttipohjaiseen arkkitehtuuriin ja hyvään skaalautuvuuteen modernien käyttöliittymien kehityksessä.
+
+Käyttöliittymä:
+
+Käyttöliittymä on rakennettu selkeästi jäsennellyillä React-komponenteilla.Käytössä on erillisiä lomake- ja listakomponentteja (esim. IncomeForm.jsx, ExpenseList.jsx), jotka mahdollistavat tulojen, menojen ja säästöjen hallinnan. DashboardPage.jsx kokoaa käyttäjän taloustilanteen yhteen näkymään.
+
+Navigointi ja reititys:
+
+Käytössä on React Router, jonka avulla hallitaan näkymien välistä siirtymistä (esim. /login, /income, /expenses, /dashboard). Käyttäjän autentikointi frontendissä:
+Käytössä on AuthContext, joka hallinnoi käyttäjän kirjautumistilaa ja suojaa tietyt reitit (ProtectedRoute.jsx).
+
+Viestintä backendiin:
+
+Tiedon haku ja lähetys backendille tehdään api.js-tiedostossa määritellyillä funktioilla käyttäen fetch-kutsuja.
+
+Ulkoasu ja tyyli:
+
+Tyylit on toteutettu CSS-tiedostoilla (App.css, index.css), ja sovelluksen ulkoasu pyritty pitämään selkeänä ja helppokäyttöisenä.
+
+Tiedostorakenne:
+
+components/: Yksittäiset uudelleenkäytettävät komponentit (lomakkeet, listat, näkymät)
+pages/: Kokonaiset näkymät tai reititetyt sivut
+context/: Sovelluksen tilanhallintaan liittyvä logiikka (esim. kirjautuminen)
+assets/: Kuvakkeet ja visuaaliset elementit
+
+Työkalut ja kehitysympäristö:
+
+Frontend-projekti on luotu Vite-työkalulla, joka mahdollistaa nopean kehityskokemuksen.
+ESLint on käytössä koodin laadun tarkkailuun (eslint.config.js).
+
 
 ## 4. Tietokanta
 Sovelluksessa käytetään relaatiotietokantaa PostgreSQL. Valinta perustuu seuraaviin perusteluihin:
