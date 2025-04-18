@@ -194,8 +194,145 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 
 ## 7. Koodin laatu ja dokumentointi
 
+### Koodin jäsenneltävyys ja luettavuus
+
+Projektissa on pyritty selkeään ja loogiseen rakenteeseen, jossa frontend ja backend on eroteltu omiin kansioihinsa.
+
+Sovelluksen koodi on jaettu modulaarisesti:
+
+**Frontendissä:**
+- Komponentit sijaitsevat kansiossa `components/` (esim. `CalendarView.jsx`, `SavingsProgress.jsx`)
+- Sivu- ja näkymäkohtaiset komponentit ovat `pages/`-kansiossa (esim. `DashboardPage.jsx`, `ProfilePage.jsx`)
+- Tilanhallintaan liittyvä logiikka sijaitsee `context/`-kansiossa
+
+**Backendissä:**
+- `routes/`, `controllers/`, `models/` ja `config/`-kansiot eriyttävät selkeästi reitityksen, käsittelylogiikan ja tietokantatoiminnot
+
+Nimeämiskäytännöt ovat kuvaavia ja englanninkielisiä, mikä helpottaa ylläpitoa ja yhteistyötä.
+
+### Koodin validointi ja tarkistus
+
+Frontend-projekti on luotu Vite-työkalulla, ja laadunvarmistukseen käytetään ESLint-työkalua.
+
+Projektissa on määritelty omat tarkistussäännöt tiedostossa `eslint.config.js`, joka auttaa pitämään:
+- yhtenäisen koodityylin
+- ylimääräiset muuttujat tai virheelliset importit kurissa
+- automaattisesti varoittaa mahdollisista virheistä jo koodausvaiheessa
+
+### Kommentointi ja sisäinen dokumentointi
+
+Koodin ymmärrettävyyttä tukevat lyhyet kommentit, erityisesti backendissä.
+
+Controller-funktioiden alkuun on lisätty selityksiä toiminnasta.
+
+### Ulkoinen dokumentaatio
+
+Projektin juurikansiossa on `README.md`, `Määrittely ja suunnittelu.md` ja `Perusrakenne ja päätoiminnot.md` jotka sisältää:
+- Lyhyen kuvauksen sovelluksesta
+- Kehitysympäristön käynnistysohjeet
+- Kuvauksen frontendin ja backendin välisestä yhteydestä
+- Mahdollisesti tuleva API-dokumentaatio (esim. käytettävät reitit `/api/auth`, `/api/transactions`, jne.)
+- Ajankäytön seurannan
+
+### Versionhallinta
+
+Projektissa käytetään Git-versiohallintaa, ja kaikki koodi on tallennettu GitHub-repositorioon.
+
+- Tiedostohistoriaa voidaan tarkastella selkeästi ja kehityksen edistymistä seurataan commit-viestien avulla
+- Kehitystiimi käyttää ominaisuushaaroja (feature branches) ja hallinnoi yhdistämiset päähaaraan (`main`) hallitusti
 
 ## 8. Testaus ja virheenkäsittely
 
+### Manuaalinen testaus
+
+Sovelluksen keskeiset toiminnot on testattu manuaalisesti käyttöliittymän kautta:
+
+- Käyttäjän rekisteröinti, kirjautuminen ja uloskirjautuminen  
+- Tulojen, menojen ja säästöpäivien lisääminen ja tarkastelu  
+- Kalenteripäivien klikkaaminen ja tapahtuman lisääminen eri summilla (myös 0 €)  
+- Profiilisivun muokkaaminen  
+- Säästötavoitteen etenemisen tarkastelu dashboardissa  
+
+Virhetilanteita testattiin mm. seuraavilla tavoilla:
+
+- Kirjautuminen virheellisellä salasanalla → virheilmoitus  
+- Kirjautuminen ilman tokenia → uudelleenohjaus /login-sivulle  
+- Kalenteriin tallennus ilman summaa → virheilmoitus  
+- Syötettiin negatiivisia tai virheellisiä summia → estettiin tallennus  
+
+### Virheenkäsittely frontendissä
+
+Frontendissä API-kutsut on ympäröity `try-catch`-lohkoilla. Käyttäjälle näytetään selkeitä virheilmoituksia toast-viesteinä Chakra UI:n `useToast`-keksin avulla.  
+
+Esimerkiksi `DashboardPage.jsx`-tiedostossa tallennusnappi antaa palautetta onnistumisesta tai virheestä.  
+
+### Virheenkäsittely backendissä
+
+Backendissä käytetään selkeitä HTTP-statuskoodeja ja virheilmoituksia JSON-muodossa. Esimerkiksi:
+
+- **400 Bad Request**: kun vaadittu tieto puuttuu  
+- **401 Unauthorized**: puuttuva tai virheellinen JWT-token  
+- **404 Not Found**: kun resurssia ei löydy  
+- **500 Internal Server Error**: yleinen virhetilanne  
+
+### Mahdollinen yksikkötestaus
+
+Tässä vaiheessa sovellukseen ei ole vielä kirjoitettu automaattisia yksikkötestejä (esim. Jest, Vitest tai Supertest), vaan painopiste on ollut toiminnallisuuden varmistamisessa manuaalisin testein.  
+
+Jatkokehityksessä voitaisiin kirjoittaa yksikkötestejä erityisesti:
+
+- backendin API-reiteille (esim. `POST /api/transactions`)  
+- tulo- ja menolomakkeiden validoinnille frontendissä  
+
 
 ## 9. Käyttöliittymä ja vuorovaikutus
+
+### Käyttöliittymän rakenne
+
+Sovellus koostuu useista näkymistä, joihin käyttäjä navigoi yläpalkin avulla. Navigointi on toteutettu React Router -kirjastolla, ja suojatut näkymät on suojattu kirjautumistilanteen mukaan `ProtectedRoutes`-komponentilla.
+
+### Sovelluksen päänäkymät:
+
+- `/login` – Kirjautumissivu  
+- `/register` – Rekisteröitymissivu (sama komponentti eri tilassa)  
+- `/` – Dashboard eli etusivu kirjautuneelle käyttäjälle  
+- `/tulot` – Tulot-näkymä  
+- `/menot` – Menot-näkymä  
+- `/saasto` – Säästötavoitteen näkymä  
+- `/profiili` – Käyttäjän omat tiedot ja uloskirjautuminen  
+
+Navigointi toteutetaan `Navbar`-komponentilla, jossa käytetään `NavLink`-elementtejä.
+
+### Käyttäjäpolku ja vuorovaikutus
+
+Uusi käyttäjä aloittaa rekisteröitymällä. Tämän jälkeen hän kirjautuu sisään ja saa käyttöönsä koko sovelluksen toiminnallisuudet.
+
+Kirjautumisen jälkeen käyttäjä ohjataan automaattisesti Dashboard-näkymään.
+
+Tietojen lisäys tapahtuu lomakkeilla ja modaalien kautta. Esimerkiksi kalenterin päivää klikkaamalla avautuu `modal`-komponentti, jossa käyttäjä voi syöttää summan tai merkitä, ettei rahaa käytetty.
+
+### Visuaalinen tyyli ja käytetyt UI-kirjastot
+
+Käyttöliittymä on rakennettu käyttäen **Chakra UI** -kirjastoa, joka tarjoaa valmiita komponentteja ja teemoituksen:
+
+- Väriteemana käytetään vaaleita ja tummia tiloja `useColorModeValue`-hookin avulla  
+- Kalenterinäkymässä vihreä tausta kertoo säästöpäivästä  
+- Käytetty summa näytetään kalenteripäivän yhteydessä  
+
+### Käyttökokemuksen parantaminen
+
+Käyttökokemusta (UX) parannetaan monin tavoin:
+
+- Automaattinen focus lomakekenttiin modalin avautuessa  
+- Oletusarvot ja nollaus: esimerkiksi kalenterinäkymässä lomake nollautuu automaattisesti  
+- Toast-ilmoitukset antavat käyttäjälle palautetta kaikista toimista (onnistuminen/virhe)  
+- Modaalit vähentävät turhia näkymänvaihtoja ja pitävät käyttökokemuksen sulavana  
+- Esteettömyys huomioitu Chakra UI:n oletusarvoilla (esim. painikkeiden kontrastit, näppäimistökäyttö)  
+
+### Esimerkkinäkymät (liitettävissä dokumenttiin):
+
+- Kalenterinäkymä, jossa päivät näkyvät ja tapahtumat kirjataan  
+- Profiilin muokkausmodal  
+- Tulojen ja menojen lomakkeet  
+- Toast-viesti tallennuksesta  
+
