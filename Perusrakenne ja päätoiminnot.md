@@ -132,8 +132,6 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
   <Input value={user.name} onChange={e => setUser({ ...user, name: e.target.value })} />
   ```
 
----
-
 ### Päivittäinen rahankäytön seuranta kalenterin avulla
 
 - **Kalenterinäkymä**  
@@ -159,8 +157,6 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
   await axios.post('/api/transactions', { date: formattedDate, amount: parsedAmount })
   ```
 
----
-
 ### Tulojen ja menojen hallinta
 
 - **Lisäys omilla lomakkeilla**  
@@ -183,21 +179,17 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 - **Yhteenveto dashboardissa**  
   Kalenterinäkymässä näkyy päivittäiset kulutukset ja vihreät merkinnät osoittavat säästöpäiviä.
 
----
 
 ### Säästötavoitteet
 
 - Käyttäjä voi asettaa säästötavoitteen.
 - Dashboardilla näkyvä progressiivinen palkki kertoo reaaliajassa, kuinka paljon tavoitteesta on saavutettu.
 
----
 
 ### Visualisointi ja yleiskuva
 
 - Kalenterinäkymä tarjoaa nopean kokonaiskuvan kulutuspäivistä ja säästöpäivistä.
 - Värikoodaus auttaa tulkitsemaan tilannetta visuaalisesti – esim. vihreä väri tarkoittaa, että rahaa ei ole käytetty kyseisenä päivänä.
-
-
 
 
 ## 7. Koodin laatu ja dokumentointi
