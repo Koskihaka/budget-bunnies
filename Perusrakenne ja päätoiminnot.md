@@ -113,6 +113,94 @@ Sovellus on jaettu frontend- ja backend-osuuksiin, jotka keskustelevat keskenä�
 
 ## 6. Toiminnot
 
+## 6. Toiminnot
+
+Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen talouden hallintaan:
+
+### Käyttäjänhallinta
+
+- **Rekisteröityminen ja kirjautuminen**  
+  Käyttäjä voi luoda tilin ja kirjautua sisään. Autentikointi hoidetaan JWT-tokenin avulla.
+  
+- **Suojatut reitit**  
+  Käyttäjä pääsee dashboardiin vain kirjautumisen jälkeen. Token tarkistetaan jokaisessa pyynnössä:  
+  ```js
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  ```
+
+- **Profiilin tarkastelu ja muokkaus**  
+  Käyttäjä voi tarkastella ja päivittää nimeään ja sähköpostiosoitettaan `ProfilePage.jsx`-näkymässä:  
+  ```js
+  <Input value={user.name} onChange={e => setUser({ ...user, name: e.target.value })} />
+  ```
+
+---
+
+### Päivittäinen rahankäytön seuranta kalenterin avulla
+
+- **Kalenterinäkymä**  
+  Jokainen kuukauden päivä näkyy `CalendarView`-komponentissa. Käyttäjä voi klikata päivää ja kirjata siihen kulutuksen:  
+  ```js
+  onDayClick={day => {
+    setSelectedDate(day)
+    onOpen()
+  }}
+  ```
+
+- **Kulutuksen kirjaaminen ja säästöpäivä**  
+  Käyttäjä syöttää päiväsumman tai valitsee "Ei käytetty rahaa" -napin, joka tallentaa nollakulutuksen:  
+  ```js
+  <Button onClick={() => { setAmount('0'); setTimeout(handleSave, 0) }}>
+    Ei käytetty rahaa
+  </Button>
+  ```
+
+- **Tallennus backendille**  
+  Päivämäärä ja summa lähetetään tietokantaan Axios-pyynnöllä:  
+  ```js
+  await axios.post('/api/transactions', { date: formattedDate, amount: parsedAmount })
+  ```
+
+---
+
+### Tulojen ja menojen hallinta
+
+- **Lisäys omilla lomakkeilla**  
+  Käyttäjä voi lisätä tuloja ja menoja erillisillä näkymillä (`/tulot`, `/menot`), joissa on omat lomakkeensa tiedon syöttöön.
+
+- **Tapahtuman tiedot**  
+  Kukin tapahtuma sisältää summan, kuvauksen ja päivämäärän:
+  ```json
+  {
+    "amount": 2500,
+    "category": "Palkka",
+    "date": "2025-04-01",
+    "description": "Kuukausipalkka"
+  }
+  ```
+
+- **Tallennus tietokantaan**  
+  Tiedot tallennetaan PostgreSQL-tietokantaan käyttäjäkohtaisesti (`user_id`).
+
+- **Yhteenveto dashboardissa**  
+  Kalenterinäkymässä näkyy päivittäiset kulutukset ja vihreät merkinnät osoittavat säästöpäiviä.
+
+---
+
+### Säästötavoitteet
+
+- Käyttäjä voi asettaa säästötavoitteen.
+- Dashboardilla näkyvä progressiivinen palkki kertoo reaaliajassa, kuinka paljon tavoitteesta on saavutettu.
+
+---
+
+### Visualisointi ja yleiskuva
+
+- Kalenterinäkymä tarjoaa nopean kokonaiskuvan kulutuspäivistä ja säästöpäivistä.
+- Värikoodaus auttaa tulkitsemaan tilannetta visuaalisesti – esim. vihreä väri tarkoittaa, että rahaa ei ole käytetty kyseisenä päivänä.
+
+
+
 
 ## 7. Koodin laatu ja dokumentointi
 
