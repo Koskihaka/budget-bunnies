@@ -63,8 +63,11 @@ Tyylit on toteutettu CSS-tiedostoilla (App.css, index.css), ja sovelluksen ulkoa
 Tiedostorakenne:
 
 components/: Yksittäiset uudelleenkäytettävät komponentit (lomakkeet, listat, näkymät)
+
 pages/: Kokonaiset näkymät tai reititetyt sivut
+
 context/: Sovelluksen tilanhallintaan liittyvä logiikka (esim. kirjautuminen)
+
 assets/: Kuvakkeet ja visuaaliset elementit
 
 Työkalut ja kehitysympäristö:
