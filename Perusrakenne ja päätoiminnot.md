@@ -11,25 +11,21 @@ Sovelluksen käynnistys ja ylläpito tapahtuvat komentoriviltä, tyypillisesti e
 Projektia ei ole vielä viety pilvipalveluun tai virtuaalikoneeseen, vaan se toimii täysin paikallisesti.
 
 ## 2. Backend
-Teknologia: Sovelluksen backend on toteutettu Node.js-ympäristössä käyttäen Express.js-kehystä, mikä mahdollistaa REST API -rajapintojen luomisen tehokkaasti.
+**Teknologia:** Sovelluksen backend on toteutettu Node.js-ympäristössä käyttäen Express.js-kehystä, mikä mahdollistaa REST API -rajapintojen luomisen tehokkaasti.
 
-API-rakenteet: Backend palvelee frontendia REST-rajapinnan kautta. Käytössä on eri reititykset tuloille (/api/incomes), menoille (/api/expenses), säästöille (/api/savings), tapahtumille (/api/transactions) ja käyttäjähallinnalle (/api/auth).
+**API-rakenteet:** Backend palvelee frontendia REST-rajapinnan kautta. Käytössä on eri reititykset tuloille (/api/incomes), menoille (/api/expenses), säästöille (/api/savings), tapahtumille (/api/transactions) ja käyttäjähallinnalle (/api/auth).
 
-Tietoturva ja autentikointi: Käyttäjien kirjautuminen ja rekisteröityminen on toteutettu, ja järjestelmä tukee JWT (JSON Web Token) -autentikointia suojattujen resurssien käyttämiseen.
+**Tietoturva ja autentikointi:** Käyttäjien kirjautuminen ja rekisteröityminen on toteutettu, ja järjestelmä tukee JWT (JSON Web Token) -autentikointia suojattujen resurssien käyttämiseen.
 
-Tietokantayhteys: Backend on yhdistetty PostgreSQL-tietokantaan, ja tietomallit on rakennettu relaatiopohjaisesti. Yhteys hoidetaan erillisen db.js-tiedoston kautta.
+**Tietokantayhteys:** Backend on yhdistetty PostgreSQL-tietokantaan, ja tietomallit on rakennettu relaatiopohjaisesti. Yhteys hoidetaan erillisen db.js-tiedoston kautta.
 
-Tietomallit ja migraatiot:
+**Tietomallit ja migraatiot:** Tietokannan skeema on määritelty models-kansiossa. Tietorakenteet on luotu migraatiotiedostoilla, jotka varmistavat versionhallinnan ja rakenteiden yhdenmukaisuuden (migrations/-kansiossa mm. create-users.js, create-transactions.js jne.).
 
-Tietokannan skeema on määritelty models-kansiossa.
+**Ohjelmointikieli:** Backend on kirjoitettu JavaScriptillä.
 
-Tietorakenteet on luotu migraatiotiedostoilla, jotka varmistavat versionhallinnan ja rakenteiden yhdenmukaisuuden (migrations/-kansiossa mm. create-users.js, create-transactions.js jne.).
+**Virheenkäsittely:** Reitityksissä ja ohjaimissa on käytössä virheenkäsittelylogiikka, joka palauttaa sopivat HTTP-statukset ja viestit virhetilanteissa (esim. 400, 401, 500).
 
-Ohjelmointikieli: Backend on kirjoitettu JavaScriptillä.
-
-Virheenkäsittely: Reitityksissä ja ohjaimissa on käytössä virheenkäsittelylogiikka, joka palauttaa sopivat HTTP-statukset ja viestit virhetilanteissa (esim. 400, 401, 500).
-
-Tiedostorakenne:
+**Tiedostorakenne:**
 
 controllers/: Logiikka kunkin resurssin käsittelyyn (incomes, expenses jne.)
 
@@ -43,24 +39,15 @@ config/: Yhteydet tietokantaan ym. asetukset
 
 Sovelluksen frontend on toteutettu Reactilla. Valinta perustuu sen komponenttipohjaiseen arkkitehtuuriin ja hyvään skaalautuvuuteen modernien käyttöliittymien kehityksessä.
 
-Käyttöliittymä:
+**Käyttöliittymä:** Rakennettu selkeästi jäsennellyillä React-komponenteilla. Käytössä on erillisiä lomake- ja listakomponentteja (esim. IncomeForm.jsx, ExpenseList.jsx), jotka mahdollistavat tulojen, menojen ja säästöjen hallinnan. DashboardPage.jsx kokoaa käyttäjän taloustilanteen yhteen näkymään.
 
-Käyttöliittymä on rakennettu selkeästi jäsennellyillä React-komponenteilla.Käytössä on erillisiä lomake- ja listakomponentteja (esim. IncomeForm.jsx, ExpenseList.jsx), jotka mahdollistavat tulojen, menojen ja säästöjen hallinnan. DashboardPage.jsx kokoaa käyttäjän taloustilanteen yhteen näkymään.
+**Navigointi ja reititys:** Käytössä on React Router, jonka avulla hallitaan näkymien välistä siirtymistä (esim. /login, /income, /expenses, /dashboard). Käyttäjän autentikointi frontendissä: Käytössä on AuthContext, joka hallinnoi käyttäjän kirjautumistilaa ja suojaa tietyt reitit (ProtectedRoute.jsx).
 
-Navigointi ja reititys:
+**Viestintä backendiin:** Tiedon haku ja lähetys backendille tehdään api.js-tiedostossa määritellyillä funktioilla käyttäen fetch-kutsuja.
 
-Käytössä on React Router, jonka avulla hallitaan näkymien välistä siirtymistä (esim. /login, /income, /expenses, /dashboard). Käyttäjän autentikointi frontendissä:
-Käytössä on AuthContext, joka hallinnoi käyttäjän kirjautumistilaa ja suojaa tietyt reitit (ProtectedRoute.jsx).
+**Ulkoasu ja tyyli:** Tyylit on toteutettu CSS-tiedostoilla (App.css, index.css), ja sovelluksen ulkoasu pyritty pitämään selkeänä ja helppokäyttöisenä.
 
-Viestintä backendiin:
-
-Tiedon haku ja lähetys backendille tehdään api.js-tiedostossa määritellyillä funktioilla käyttäen fetch-kutsuja.
-
-Ulkoasu ja tyyli:
-
-Tyylit on toteutettu CSS-tiedostoilla (App.css, index.css), ja sovelluksen ulkoasu pyritty pitämään selkeänä ja helppokäyttöisenä.
-
-Tiedostorakenne:
+**Tiedostorakenne:**
 
 components/: Yksittäiset uudelleenkäytettävät komponentit (lomakkeet, listat, näkymät)
 
@@ -70,10 +57,7 @@ context/: Sovelluksen tilanhallintaan liittyvä logiikka (esim. kirjautuminen)
 
 assets/: Kuvakkeet ja visuaaliset elementit
 
-Työkalut ja kehitysympäristö:
-
-Frontend-projekti on luotu Vite-työkalulla, joka mahdollistaa nopean kehityskokemuksen.
-ESLint on käytössä koodin laadun tarkkailuun (eslint.config.js).
+**Työkalut ja kehitysympäristö:** Frontend-projekti on luotu Vite-työkalulla, joka mahdollistaa nopean kehityskokemuksen. ESLint on käytössä koodin laadun tarkkailuun (eslint.config.js).
 
 
 ## 4. Tietokanta
