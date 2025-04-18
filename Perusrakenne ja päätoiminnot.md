@@ -2,7 +2,13 @@
 
 
 ## 1. Ympäristö
+Sovellusta kehitetään ja suoritetaan paikallisesti kehitysympäristössä, joka sisältää sekä frontendin että backendin. Kehitysympäristönä käytetään Visual Studio Codea, jossa projektin kansiorakenne on selkeästi jaettu backend- ja frontend-kansioihin.
 
+Versiohallintaan käytetään Git-työkalua ja projektin lähdekoodi on tallennettu GitHub-repositorioon, mikä tukee yhteistyötä ja mahdollistaa versionseurannan sekä palautumisen aiempiin vaiheisiin.
+
+Sovelluksen käynnistys ja ylläpito tapahtuvat komentoriviltä, tyypillisesti erillisin komennoin frontend- ja backend-palvelimille (esim. npm run dev, node index.js).
+
+Projektia ei ole vielä viety pilvipalveluun tai virtuaalikoneeseen, vaan se toimii täysin paikallisesti.
 
 ## 2. Backend
 
