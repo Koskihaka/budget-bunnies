@@ -119,6 +119,9 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 
 - **Rekisteröityminen ja kirjautuminen**  
   Käyttäjä voi luoda tilin ja kirjautua sisään. Autentikointi hoidetaan JWT-tokenin avulla.
+
+  ![image](https://github.com/user-attachments/assets/0278e307-f30f-475b-af10-3edc17715f7d)
+
   
 - **Suojatut reitit**  
   Käyttäjä pääsee dashboardiin vain kirjautumisen jälkeen. Token tarkistetaan jokaisessa pyynnössä:  
@@ -132,6 +135,9 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
   <Input value={user.name} onChange={e => setUser({ ...user, name: e.target.value })} />
   ```
 
+![image](https://github.com/user-attachments/assets/3f35e318-9454-4b5f-ad2e-a0120e34f07e)
+
+
 ### Päivittäinen rahankäytön seuranta kalenterin avulla
 
 - **Kalenterinäkymä**  
@@ -142,6 +148,9 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
     onOpen()
   }}
   ```
+
+  ![image](https://github.com/user-attachments/assets/19786751-9879-495d-aede-d704f37126c9)
+  
 
 - **Kulutuksen kirjaaminen ja säästöpäivä**  
   Käyttäjä syöttää päiväsumman tai valitsee "Ei käytetty rahaa" -napin, joka tallentaa nollakulutuksen:  
@@ -161,6 +170,12 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 
 - **Lisäys omilla lomakkeilla**  
   Käyttäjä voi lisätä tuloja ja menoja erillisillä näkymillä (`/tulot`, `/menot`), joissa on omat lomakkeensa tiedon syöttöön.
+
+  ![image](https://github.com/user-attachments/assets/70447709-e7c2-44a4-80db-ebdad539dad6)
+
+  ![image](https://github.com/user-attachments/assets/1ff6a45d-add0-40d4-9580-bb20e595bf02)
+
+
 
 - **Tapahtuman tiedot**  
   Kukin tapahtuma sisältää summan, kuvauksen ja päivämäärän:
@@ -185,11 +200,16 @@ Sovellus tarjoaa seuraavat keskeiset toiminnot käyttäjän henkilökohtaisen ta
 - Käyttäjä voi asettaa säästötavoitteen.
 - Dashboardilla näkyvä progressiivinen palkki kertoo reaaliajassa, kuinka paljon tavoitteesta on saavutettu.
 
+  ![image](https://github.com/user-attachments/assets/dff16bca-7635-44f8-b96a-01a1d3f5d749)
+
+
 
 ### Visualisointi ja yleiskuva
 
 - Kalenterinäkymä tarjoaa nopean kokonaiskuvan kulutuspäivistä ja säästöpäivistä.
 - Värikoodaus auttaa tulkitsemaan tilannetta visuaalisesti – esim. vihreä väri tarkoittaa, että rahaa ei ole käytetty kyseisenä päivänä.
+
+
 
 
 ### Toteuttamatta jääneet ominaisuudet
