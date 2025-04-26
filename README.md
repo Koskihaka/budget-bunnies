@@ -11,3 +11,6 @@
 | 12.4.2025   | 4         | Perusrakenne ja päätoiminnot        | jatkettu koodailua     | Hanna + Maria    |
 | 17.4.2025   | 3         | Perusrakenne ja päätoiminnot        | jatkettu koodailua     | Hanna + Maria    |
 | 18.4.2025   | 8         | Perusrakenne ja päätoiminnot        | viimeistelyä           | Hanna + Maria    |
+| 26.4.2025   | 6         | Jatkokehitys       | Pilvipalvelua ja testausta          | Hanna + Maria    |
+| 27.4.2025   | 6         | Esittely       | Esittely videon teko          | Hanna + Maria    |
+| Tunnit yhteensä  | 42         | 
