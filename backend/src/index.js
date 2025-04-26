@@ -12,7 +12,13 @@ const expRouter  = require('./routes/expenses');
 const savRouter  = require('./routes/savings');
 
 const app = express();
-app.use(cors());
+
+// ✨ Muokattu CORS-asetus täällä:
+app.use(cors({
+  origin: 'https://lemon-plant-09e01f603.6.azurestaticapps.net',
+  credentials: true
+}));
+
 app.use(express.json());
 
 // ——— 1) Health‑endpoint ennen kaikkea muuta ———
@@ -47,6 +53,7 @@ app.use('/api/expenses',     expRouter);
 app.use('/api/savings',      savRouter);
 
 // ——— 5) Käynnistys ———
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server listening on http://localhost:${process.env.PORT||3000}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✨ Server listening on http://localhost:${PORT}`);
 });
