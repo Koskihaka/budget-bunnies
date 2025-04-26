@@ -14,4 +14,4 @@
 | 21.4.2025   | 6         | Jatkokehitys       | Pilvipalvelua ja testausta          | Hanna + Maria    |
 | 26.4.2025   | 7         | Jatkokehitys       | Pilvipalvelua ja testausta          | Hanna + Maria    |
 | 27.4.2025   | 7         | Esittely       | Esittely videon teko          | Hanna + Maria    |
-| Tunnit yhteensä  | 50         | 
+| Tunnit yhteensä  | 52         | 
