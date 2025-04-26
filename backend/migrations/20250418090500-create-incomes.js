@@ -4,7 +4,7 @@ exports.up = (pgm) => {
       id:          'id', 
       user_id:     { type: 'integer', notNull: true },
       amount:      { type: 'numeric(10,2)', notNull: true },
-      category:    { type: 'varchar(50)', notNull: true },
+      name:    { type: 'varchar(50)', notNull: true },
       date:        { type: 'date', notNull: true },
       description: { type: 'text' },
     });

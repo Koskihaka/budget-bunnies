@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/63fd5ec8-a0d1-4977-9f17-5a565ae3dc8d/resourceGroups/budget-bunnies-rg/providers/Microsoft.Web/sites/budget-bunnies-backend",
+    "appService.deploySubpath": "backend"
+}
