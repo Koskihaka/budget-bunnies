@@ -13,11 +13,13 @@ const savRouter  = require('./routes/savings');
 
 const app = express();
 
-// ✨ Muokattu CORS-asetus täällä:
 app.use(cors({
   origin: 'https://lemon-plant-09e01f603.6.azurestaticapps.net',
-  credentials: true
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
+
 
 app.use(express.json());
 
