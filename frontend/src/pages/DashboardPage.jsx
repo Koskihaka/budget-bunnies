@@ -95,8 +95,6 @@ export default function DashboardPage() {
   return( 
   <Flex direction="column" minH="100vh">
   <Box flex="1" px={{ base: 4, md: 8 }} py={6}>
-    <Heading mb={6} size="lg">
-      {format(now, 'LLLL yyyy', { locale: fi })}
       <Flex justify="space-between" align="center" mb={4}>
   <Button onClick={() => {
     const prev = subMonths(new Date(year, month - 1), 1);
@@ -108,7 +106,7 @@ export default function DashboardPage() {
 
   <Heading size="lg">
     {format(new Date(year, month - 1), 'LLLL yyyy', { locale: fi })}
-  </Heading>
+    </Heading> 
 
   <Button onClick={() => {
     const next = addMonths(new Date(year, month - 1), 1);
@@ -118,7 +116,6 @@ export default function DashboardPage() {
     Seuraava kuukausi
   </Button>
 </Flex>
-    </Heading>
 
     <Box bg={cardBg} p={{ base: 4, md: 6 }} rounded="lg" boxShadow="md" mb={8}>
       <CalendarView
