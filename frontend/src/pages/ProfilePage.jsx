@@ -16,7 +16,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     console.log("Token profiilihakua varten:", token)
-    axios.get("/api/user/me", {
+    axios.get("https://budget-bunnies-backend-bsc6bvdrdffae7d6.northeurope-01.azurewebsites.net/api/user/me", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
