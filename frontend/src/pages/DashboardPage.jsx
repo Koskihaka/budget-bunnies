@@ -79,7 +79,7 @@ export default function DashboardPage() {
 
     try {
       await axios.post(
-        '/api/transactions',
+        'https://budget-bunnies-backend-bsc6bvdrdffae7d6.northeurope-01.azurewebsites.net/api/transactions',
         { date: formattedDate, amount: parsedAmount },
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       )
