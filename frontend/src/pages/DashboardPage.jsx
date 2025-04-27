@@ -22,6 +22,7 @@ import { fi } from 'date-fns/locale'
 import CalendarView from '../components/CalendarView'
 import axios from 'axios'
 import { fetchSavings } from '../api'
+import { addMonths, subMonths } from 'date-fns';
 
 export default function DashboardPage() {
   const now = new Date()
@@ -91,25 +92,46 @@ export default function DashboardPage() {
     }
   }
 
-  return (
-    <Flex direction="column" minH="100vh">
-      <Box flex="1" px={{ base: 4, md: 8 }} py={6}>
-        <Heading mb={6} size="lg">
-          {format(now, 'LLLL yyyy', { locale: fi })}
-        </Heading>
+  return( 
+  <Flex direction="column" minH="100vh">
+  <Box flex="1" px={{ base: 4, md: 8 }} py={6}>
+    <Heading mb={6} size="lg">
+      {format(now, 'LLLL yyyy', { locale: fi })}
+      <Flex justify="space-between" align="center" mb={4}>
+  <Button onClick={() => {
+    const prev = subMonths(new Date(year, month - 1), 1);
+    setYear(prev.getFullYear());
+    setMonth(prev.getMonth() + 1);
+  }}>
+    Edellinen kuukausi
+  </Button>
 
-        <Box bg={cardBg} p={{ base: 4, md: 6 }} rounded="lg" boxShadow="md" mb={8}>
-          <CalendarView
-            year={year}
-            month={month}
-            data={txMap}
-            onDayClick={day => {
-              setSelectedDate(day)
-              setAmount('')
-              onOpen()
-            }}
-          />
-        </Box>
+  <Heading size="lg">
+    {format(new Date(year, month - 1), 'LLLL yyyy', { locale: fi })}
+  </Heading>
+
+  <Button onClick={() => {
+    const next = addMonths(new Date(year, month - 1), 1);
+    setYear(next.getFullYear());
+    setMonth(next.getMonth() + 1);
+  }}>
+    Seuraava kuukausi
+  </Button>
+</Flex>
+    </Heading>
+
+    <Box bg={cardBg} p={{ base: 4, md: 6 }} rounded="lg" boxShadow="md" mb={8}>
+      <CalendarView
+        year={year}
+        month={month}
+        data={txMap}
+        onDayClick={day => {
+          setSelectedDate(day)
+          setAmount('')
+          onOpen()
+        }}
+      />
+    </Box>
 
         <Box mt={6} p={4} borderWidth="1px" borderRadius="lg">
           <Heading size="sm" mb={2}>Säästötavoite</Heading>
