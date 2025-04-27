@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Box, Heading, useToast } from '@chakra-ui/react'
 import IncomeForm from '../components/IncomeForm'
 import IncomeList from '../components/IncomeList'
-import { fetchIncomesFromApi, createIncome, deleteIncome } from '../api'
+import { fetchIncomes, createIncome, deleteIncome } from '../api'
 
 export default function IncomePage() {
   const now = new Date();
@@ -12,9 +12,10 @@ export default function IncomePage() {
   const [month] = useState(now.getMonth() + 1);
   const toast = useToast();
 
-  const fetchIncomes = async (year, month) => {
+  useEffect(() => {
+     async function fetchData() {
     try {
-      const data = await fetchIncomesFromApi(year, month);
+      const data = await fetchIncomes(year, month);
       setItems(data); 
       const sum = data.reduce((total, item) => total + Number(item.amount), 0);
       setTotal(sum);  
@@ -24,8 +25,7 @@ export default function IncomePage() {
     }
   };
 
-  useEffect(() => {
-    fetchIncomes(year, month);
+    fetchData();
   }, [year, month]);
 
   const handleAdd = async (values) => {
