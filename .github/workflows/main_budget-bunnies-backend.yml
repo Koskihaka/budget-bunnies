@@ -70,5 +70,5 @@ jobs:
         with:
           app-name: 'budget-bunnies-backend'
           slot-name: 'Production'
-          package: .
+          package: './backend'
           
