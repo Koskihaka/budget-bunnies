@@ -1,5 +1,3 @@
-// frontend/src/pages/IncomePage.jsx
-
 import { useState, useEffect } from 'react'
 import { Box, Heading, useToast } from '@chakra-ui/react'
 import IncomeForm from '../components/IncomeForm'

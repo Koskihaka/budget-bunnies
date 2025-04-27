@@ -8,7 +8,7 @@ async function getAll(userId, year, month) {
      WHERE user_id=$1
        AND EXTRACT(YEAR FROM date) = $2
        AND EXTRACT(MONTH FROM date)= $3
-     GROUP BY date ORDER BY date`,
+     ORDER BY date`,
     [userId, year, month]
   )
   return rows
