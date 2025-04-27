@@ -1,7 +1,7 @@
 const pool = require('../config/db')
 
 // Lisää yksi tapahtuma
-async function create({ user_id, amount, date, category }) {
+async function create({ user_id, amount, date, category = 'muut' }) {
   const { rows } = await pool.query(
     `INSERT INTO transactions (user_id, amount, date, category)
      VALUES ($1, $2, $3, $4)
