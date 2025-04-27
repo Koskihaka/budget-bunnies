@@ -43,7 +43,7 @@ export default function DashboardPage() {
 
   const fetchData = () => {
     axios
-      .get(`/api/transactions?year=${year}&month=${month}`, {
+      .get(`https://budget-bunnies-backend-bsc6bvdrdffae7d6.northeurope-01.azurewebsites.net/api/transactions?year=${year}&month=${month}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
       .then(res => {
