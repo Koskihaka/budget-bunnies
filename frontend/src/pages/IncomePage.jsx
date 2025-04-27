@@ -1,7 +1,9 @@
-// frontend/src/pages/IncomePage.jsx
-
 import { useState, useEffect } from 'react';
-import { Box, Heading, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  useToast,
+} from '@chakra-ui/react';
 import IncomeForm from '../components/IncomeForm';
 import IncomeList from '../components/IncomeList';
 import { fetchIncomes as fetchIncomesFromApi, createIncome, deleteIncome } from '../api';
@@ -9,46 +11,48 @@ import { fetchIncomes as fetchIncomesFromApi, createIncome, deleteIncome } from 
 export default function IncomePage() {
   const now = new Date();
   const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
   const [year] = useState(now.getFullYear());
   const [month] = useState(now.getMonth() + 1);
   const toast = useToast();
 
-  // Haetaan tulot kuukaudelle
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchIncomesFromApi(year, month);
-        setItems(data); // Tallennetaan kaikki tulot riveittäin
-      } catch (err) {
-        console.error('Virhe tulojen haussa:', err);
-        toast({ title: 'Virhe tulojen haussa', status: 'error', duration: 3000 });
-      }
-    };
+  const fetchIncomes = async (year, month) => {
+    try {
+      const data = await fetchIncomesFromApi(year, month);
+      setItems(data); // tulojen lista
+      const sum = data.reduce((total, item) => total + Number(item.amount), 0);
+      setTotal(sum);  // yhteissumma
+    } catch (err) {
+      console.error('Virhe tulojen haussa:', err);
+      toast({ title: 'Virhe tulojen haussa', status: 'error', duration: 3000 });
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchIncomes(year, month);
   }, [year, month]);
 
   const handleAdd = async (values) => {
     try {
       const newItem = await createIncome(values);
-      setItems(prev => [...prev, newItem]); // Lisätään uusi rivi listoihin
+      setItems(prev => [...prev, newItem]);
+      setTotal(prev => prev + Number(newItem.amount));
     } catch (err) {
       console.error('Virhe lisättäessä tuloa:', err);
-      toast({ title: 'Virhe lisättäessä tuloa', status: 'error', duration: 3000 });
+      toast({ title: 'Virhe tuloa lisättäessä', status: 'error', duration: 3000 });
     }
   };
 
   const handleDelete = async (item) => {
     try {
       await deleteIncome(item.id);
-      setItems(prev => prev.filter(i => i.id !== item.id)); // Poistetaan oikea rivi
+      setItems(prev => prev.filter(i => i.id !== item.id));
+      setTotal(prev => prev - Number(item.amount));
     } catch (err) {
-      console.error('Poistaminen epäonnistui:', err);
-      toast({ title: 'Virhe poistettaessa tuloa', status: 'error', duration: 3000 });
+      console.error('Virhe poistettaessa tuloa:', err);
+      toast({ title: 'Virhe tuloa poistettaessa', status: 'error', duration: 3000 });
     }
   };
-
-  const total = items.reduce((sum, item) => sum + Number(item.amount), 0);
 
   return (
     <Box p={4}>
