@@ -19,9 +19,9 @@ export default function IncomePage() {
   const fetchIncomes = async (year, month) => {
     try {
       const data = await fetchIncomesFromApi(year, month);
-      setItems(data); // tulojen lista
+      setItems(data); 
       const sum = data.reduce((total, item) => total + Number(item.amount), 0);
-      setTotal(sum);  // yhteissumma
+      setTotal(sum);  
     } catch (err) {
       console.error('Virhe tulojen haussa:', err);
       toast({ title: 'Virhe tulojen haussa', status: 'error', duration: 3000 });
