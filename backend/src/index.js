@@ -28,6 +28,7 @@ app.get('/health', (_req, res) => res.json({ status: 'OK' }));
 
 // ——— 2) Auth‑reitit (login/register) ennen tokenia ———
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRoute);
 
 // ——— 3) JWT‑middleware — ohitetaan /health ja /api/auth ———
 app.use((req, res, next) => {
