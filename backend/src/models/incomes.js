@@ -3,7 +3,7 @@ const pool = require('../config/db')
 // Hakee kaikki tulot kirjautuneelle käyttäjälle tietyltä kuukaudelta
 async function getAll(userId, year, month) {
   const { rows } = await pool.query(
-    `SELECT date, SUM(amount) AS amount
+    `SELECT id, amount, name, date, description
      FROM incomes
      WHERE user_id=$1
        AND EXTRACT(YEAR FROM date) = $2
