@@ -1,36 +1,49 @@
-const { getUserById } = require('../models/users')
+const pool = require('../config/db');
 
+// Palauttaa kirjautuneen käyttäjän tiedot
 const getProfile = async (req, res) => {
-  console.log("Profiilipyynnön käyttäjä:", req.user)
-
   try {
-    const user = await getUserById(req.user.id, {
-      attributes: ['id', 'name', 'email']
-    })
-    if (!user) return res.status(404).json({ error: 'Käyttäjää ei löydy' })
+    const { rows } = await pool.query(
+      'SELECT id, name, email FROM users WHERE id = $1',
+      [req.user.id]
+    );
 
-    res.json(user)
+    const user = rows[0];
+
+    if (!user) {
+      return res.status(404).json({ error: 'Käyttäjää ei löydy' });
+    }
+
+    res.json(user);
   } catch (err) {
-    console.error("Virhe profiilin haussa:", err)
-    res.status(500).json({ error: 'Virhe haettaessa käyttäjätietoja' })
+    console.error('Virhe profiilin haussa:', err);
+    res.status(500).json({ error: 'Virhe haettaessa käyttäjätietoja' });
   }
-}
+};
 
+// Päivittää kirjautuneen käyttäjän nimen ja sähköpostin
 const updateProfile = async (req, res) => {
-  const { name, email } = req.body
+  const { name, email } = req.body;
   try {
-    const user = await User.findByPk(req.user.id)
-    if (!user) return res.status(404).json({ error: 'Käyttäjää ei löydy' })
+    const { rows } = await pool.query(
+      'UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING id, name, email',
+      [name, email, req.user.id]
+    );
 
-    user.name = name || user.name
-    user.email = email || user.email
-    await user.save()
+    const user = rows[0];
 
-    res.json({ message: 'Tiedot päivitetty' })
+    if (!user) {
+      return res.status(404).json({ error: 'Käyttäjää ei löydy' });
+    }
+
+    res.json({ message: 'Tiedot päivitetty', user });
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Virhe päivitettäessä tietoja' })
+    console.error('Virhe profiilin päivityksessä:', err);
+    res.status(500).json({ error: 'Virhe päivitettäessä tietoja' });
   }
-}
+};
 
-module.exports = { getProfile, updateProfile }
+module.exports = {
+  getProfile,
+  updateProfile
+};
